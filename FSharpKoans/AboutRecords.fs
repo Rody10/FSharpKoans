@@ -25,7 +25,14 @@ type Book =
 module ``13: On the Record`` =
     [<Test>]
     let ``01 Creating records`` () =
-        let myRecord = __
+        let myRecord = 
+            {
+                Title = "Steelheart"
+                Author = "Brandon Sanderson"
+                Year = 2013
+            }
+        
+        
         myRecord.Title |> should equal "Steelheart"
         myRecord.Author |> should equal "Brandon Sanderson"
         myRecord.Year |> should equal 2013
@@ -39,15 +46,15 @@ module ``13: On the Record`` =
                 Author="Michel Foucault"
                 Year=1975
             }
-        myRecord |> should be ofType<FILL_ME_IN>
-        myOtherRecord |> should be ofType<FILL_ME_IN>
+        myRecord |> should be ofType<Pokemon>
+        myOtherRecord |> should be ofType<Book>
 
     [<Test>]
     let ``03 Decomposing with a record pattern`` () =
         let book = { Title="Dune"; Author="Frank Herbert"; Year=1965 }
-        let __ = book
-        __ |> should equal "Dune" // DO NOT use a . symbol in your answer
-        __ |> should equal 1965 // DO NOT use a . symbol in your answer
+        let {Title=t;Author=_;Year=y} = book
+        t|> should equal "Dune" // DO NOT use a . symbol in your answer
+        y|> should equal 1965 // DO NOT use a . symbol in your answer
 
     [<Test>]
     let ``04 Decomposing in a match expression`` () =
